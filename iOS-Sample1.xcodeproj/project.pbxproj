@@ -21,6 +21,7 @@
 		4A06B5FA22B3E8D300BDBA18 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A06B5F322B3E8D300BDBA18 /* RxRelay.framework */; };
 		4A06B60122B3EA6B00BDBA18 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B5FF22B3EA6B00BDBA18 /* LoginViewController.swift */; };
 		4A06B60222B3EA6B00BDBA18 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B60022B3EA6B00BDBA18 /* LoginViewController.xib */; };
+		4A06B60622B3F6FA00BDBA18 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B60522B3F6FA00BDBA18 /* Logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		4A06B5F322B3E8D300BDBA18 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		4A06B5FF22B3EA6B00BDBA18 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4A06B60022B3EA6B00BDBA18 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		4A06B60522B3F6FA00BDBA18 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			children = (
 				4A06B5E522B3E7C500BDBA18 /* AppDelegate */,
 				4A06B5E622B3E7E000BDBA18 /* Presentation */,
+				4A06B60322B3F6BB00BDBA18 /* Utility */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -160,6 +163,22 @@
 				4A06B60022B3EA6B00BDBA18 /* LoginViewController.xib */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		4A06B60322B3F6BB00BDBA18 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B60422B3F6EB00BDBA18 /* Logger */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		4A06B60422B3F6EB00BDBA18 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B60522B3F6FA00BDBA18 /* Logger.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A06B60122B3EA6B00BDBA18 /* LoginViewController.swift in Sources */,
+				4A06B60622B3F6FA00BDBA18 /* Logger.swift in Sources */,
 				4A06B5D022B3E44200BDBA18 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -36,6 +36,6 @@ private extension LoginViewController {
 
 private extension LoginViewController {
   @IBAction func tapLoginButton(_: UIButton) {
-    print("clicked Log In Button")
+    log.d("clicked Log In Button")
   }
 }
