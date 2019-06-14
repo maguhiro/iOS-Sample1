@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,15 @@
 		4A06B5D522B3E44300BDBA18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B5D322B3E44200BDBA18 /* Main.storyboard */; };
 		4A06B5D722B3E44500BDBA18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B5D622B3E44500BDBA18 /* Assets.xcassets */; };
 		4A06B5DA22B3E44500BDBA18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B5D822B3E44500BDBA18 /* LaunchScreen.storyboard */; };
+		4A06B5EA22B3E85500BDBA18 /* CarthageInput.xcfilelist in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B5E822B3E85500BDBA18 /* CarthageInput.xcfilelist */; };
+		4A06B5EB22B3E85500BDBA18 /* CarthageOutput.xcfilelist in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B5E922B3E85500BDBA18 /* CarthageOutput.xcfilelist */; };
+		4A06B5F422B3E8D300BDBA18 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A06B5ED22B3E8D300BDBA18 /* SwiftyBeaver.framework */; };
+		4A06B5F522B3E8D300BDBA18 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A06B5EE22B3E8D300BDBA18 /* Nuke.framework */; };
+		4A06B5F622B3E8D300BDBA18 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A06B5EF22B3E8D300BDBA18 /* SnapKit.framework */; };
+		4A06B5F722B3E8D300BDBA18 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A06B5F022B3E8D300BDBA18 /* RxCocoa.framework */; };
+		4A06B5F822B3E8D300BDBA18 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A06B5F122B3E8D300BDBA18 /* RxSwift.framework */; };
+		4A06B5F922B3E8D300BDBA18 /* DIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A06B5F222B3E8D300BDBA18 /* DIKit.framework */; };
+		4A06B5FA22B3E8D300BDBA18 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A06B5F322B3E8D300BDBA18 /* RxRelay.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +31,15 @@
 		4A06B5D622B3E44500BDBA18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A06B5D922B3E44500BDBA18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A06B5DB22B3E44500BDBA18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A06B5E822B3E85500BDBA18 /* CarthageInput.xcfilelist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcfilelist; path = CarthageInput.xcfilelist; sourceTree = "<group>"; };
+		4A06B5E922B3E85500BDBA18 /* CarthageOutput.xcfilelist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcfilelist; path = CarthageOutput.xcfilelist; sourceTree = "<group>"; };
+		4A06B5ED22B3E8D300BDBA18 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
+		4A06B5EE22B3E8D300BDBA18 /* Nuke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nuke.framework; path = Carthage/Build/iOS/Nuke.framework; sourceTree = "<group>"; };
+		4A06B5EF22B3E8D300BDBA18 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		4A06B5F022B3E8D300BDBA18 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		4A06B5F122B3E8D300BDBA18 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		4A06B5F222B3E8D300BDBA18 /* DIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DIKit.framework; path = Carthage/Build/iOS/DIKit.framework; sourceTree = "<group>"; };
+		4A06B5F322B3E8D300BDBA18 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +47,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A06B5F422B3E8D300BDBA18 /* SwiftyBeaver.framework in Frameworks */,
+				4A06B5F522B3E8D300BDBA18 /* Nuke.framework in Frameworks */,
+				4A06B5F622B3E8D300BDBA18 /* SnapKit.framework in Frameworks */,
+				4A06B5F722B3E8D300BDBA18 /* RxCocoa.framework in Frameworks */,
+				4A06B5F822B3E8D300BDBA18 /* RxSwift.framework in Frameworks */,
+				4A06B5F922B3E8D300BDBA18 /* DIKit.framework in Frameworks */,
+				4A06B5FA22B3E8D300BDBA18 /* RxRelay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +65,7 @@
 			children = (
 				4A06B5CE22B3E44200BDBA18 /* iOS-Sample1 */,
 				4A06B5CD22B3E44200BDBA18 /* Products */,
+				4A06B5EC22B3E8D300BDBA18 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +80,62 @@
 		4A06B5CE22B3E44200BDBA18 /* iOS-Sample1 */ = {
 			isa = PBXGroup;
 			children = (
-				4A06B5CF22B3E44200BDBA18 /* AppDelegate.swift */,
-				4A06B5D122B3E44200BDBA18 /* ViewController.swift */,
-				4A06B5D322B3E44200BDBA18 /* Main.storyboard */,
 				4A06B5D622B3E44500BDBA18 /* Assets.xcassets */,
-				4A06B5D822B3E44500BDBA18 /* LaunchScreen.storyboard */,
+				4A06B5E422B3E7A600BDBA18 /* Classes */,
+				4A06B5E722B3E81300BDBA18 /* Settings */,
 				4A06B5DB22B3E44500BDBA18 /* Info.plist */,
 			);
 			path = "iOS-Sample1";
+			sourceTree = "<group>";
+		};
+		4A06B5E422B3E7A600BDBA18 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B5E522B3E7C500BDBA18 /* AppDelegate */,
+				4A06B5E622B3E7E000BDBA18 /* Presentation */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		4A06B5E522B3E7C500BDBA18 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B5CF22B3E44200BDBA18 /* AppDelegate.swift */,
+				4A06B5D822B3E44500BDBA18 /* LaunchScreen.storyboard */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		4A06B5E622B3E7E000BDBA18 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B5D322B3E44200BDBA18 /* Main.storyboard */,
+				4A06B5D122B3E44200BDBA18 /* ViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		4A06B5E722B3E81300BDBA18 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B5E822B3E85500BDBA18 /* CarthageInput.xcfilelist */,
+				4A06B5E922B3E85500BDBA18 /* CarthageOutput.xcfilelist */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		4A06B5EC22B3E8D300BDBA18 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B5F222B3E8D300BDBA18 /* DIKit.framework */,
+				4A06B5EE22B3E8D300BDBA18 /* Nuke.framework */,
+				4A06B5F022B3E8D300BDBA18 /* RxCocoa.framework */,
+				4A06B5F322B3E8D300BDBA18 /* RxRelay.framework */,
+				4A06B5F122B3E8D300BDBA18 /* RxSwift.framework */,
+				4A06B5EF22B3E8D300BDBA18 /* SnapKit.framework */,
+				4A06B5ED22B3E8D300BDBA18 /* SwiftyBeaver.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +145,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4A06B5DE22B3E44500BDBA18 /* Build configuration list for PBXNativeTarget "iOS-Sample1" */;
 			buildPhases = (
+				4A06B5E222B3E6EA00BDBA18 /* SwiftLint */,
 				4A06B5C822B3E44200BDBA18 /* Sources */,
 				4A06B5C922B3E44200BDBA18 /* Frameworks */,
 				4A06B5CA22B3E44200BDBA18 /* Resources */,
+				4A06B5E322B3E70A00BDBA18 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -122,6 +198,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A06B5EA22B3E85500BDBA18 /* CarthageInput.xcfilelist in Resources */,
+				4A06B5EB22B3E85500BDBA18 /* CarthageOutput.xcfilelist in Resources */,
 				4A06B5DA22B3E44500BDBA18 /* LaunchScreen.storyboard in Resources */,
 				4A06B5D722B3E44500BDBA18 /* Assets.xcassets in Resources */,
 				4A06B5D522B3E44300BDBA18 /* Main.storyboard in Resources */,
@@ -129,6 +207,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4A06B5E222B3E6EA00BDBA18 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make lint\n";
+		};
+		4A06B5E322B3E70A00BDBA18 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"$(SRCROOT)/iOS-Sample1/Settings/CarthageInput.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = Carthage;
+			outputFileListPaths = (
+				"$(SRCROOT)/iOS-Sample1/Settings/CarthageOutput.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mint run carthage/carthage carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4A06B5C822B3E44200BDBA18 /* Sources */ = {
@@ -284,6 +403,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FR4436C6A3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "iOS-Sample1/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -302,6 +425,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FR4436C6A3;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "iOS-Sample1/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

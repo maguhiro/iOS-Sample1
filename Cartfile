@@ -1,0 +1,14 @@
+# Network
+github "kean/Nuke"                       ~> 7.6.3   # https://github.com/kean/Nuke/blob/master/CHANGELOG.md
+
+# Reactive
+github "ReactiveX/RxSwift"               ~> 5.0.1   # https://github.com/ReactiveX/RxSwift/blob/master/CHANGELOG.md
+
+# AutoLayout
+github "SnapKit/SnapKit"                 ~> 5.0.0   # https://github.com/SnapKit/SnapKit/releases
+
+# DI
+github "ishkawa/DIKit"                   ~> 0.5.0   # https://github.com/ishkawa/DIKit/releases
+
+# Logger
+github "SwiftyBeaver/SwiftyBeaver"       ~> 1.7.0   # https://github.com/SwiftyBeaver/SwiftyBeaver/blob/master/CHANGELOG.md
