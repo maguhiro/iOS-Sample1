@@ -24,6 +24,9 @@
 		4A06B60622B3F6FA00BDBA18 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B60522B3F6FA00BDBA18 /* Logger.swift */; };
 		4A06B60822B3FCC900BDBA18 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B60722B3FCC900BDBA18 /* LoginPresenter.swift */; };
 		4A06B60B22B3FF6600BDBA18 /* Optional+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B60A22B3FF6600BDBA18 /* Optional+Extenstion.swift */; };
+		4A06B61322B4018300BDBA18 /* AccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B61222B4018300BDBA18 /* AccountRepository.swift */; };
+		4A06B61622B401FB00BDBA18 /* MockAccountRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B61522B401FB00BDBA18 /* MockAccountRepositoryImpl.swift */; };
+		4A06B61822B4040400BDBA18 /* AuthenticationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B61722B4040400BDBA18 /* AuthenticationUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		4A06B60522B3F6FA00BDBA18 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		4A06B60722B3FCC900BDBA18 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		4A06B60A22B3FF6600BDBA18 /* Optional+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extenstion.swift"; sourceTree = "<group>"; };
+		4A06B61222B4018300BDBA18 /* AccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRepository.swift; sourceTree = "<group>"; };
+		4A06B61522B401FB00BDBA18 /* MockAccountRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccountRepositoryImpl.swift; sourceTree = "<group>"; };
+		4A06B61722B4040400BDBA18 /* AuthenticationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +103,12 @@
 		4A06B5E422B3E7A600BDBA18 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4A06B60E22B4013E00BDBA18 /* Infra */,
 				4A06B5E522B3E7C500BDBA18 /* AppDelegate */,
+				4A06B60C22B4010700BDBA18 /* Domain */,
 				4A06B60922B3FF5100BDBA18 /* Extenstion */,
 				4A06B5E622B3E7E000BDBA18 /* Presentation */,
+				4A06B60D22B4012000BDBA18 /* UseCase */,
 				4A06B60322B3F6BB00BDBA18 /* Utility */,
 			);
 			path = Classes;
@@ -193,6 +202,46 @@
 				4A06B60A22B3FF6600BDBA18 /* Optional+Extenstion.swift */,
 			);
 			path = Extenstion;
+			sourceTree = "<group>";
+		};
+		4A06B60C22B4010700BDBA18 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B61122B4015300BDBA18 /* Repository */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		4A06B60D22B4012000BDBA18 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B61722B4040400BDBA18 /* AuthenticationUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		4A06B60E22B4013E00BDBA18 /* Infra */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B60F22B4014300BDBA18 /* Repository */,
+			);
+			path = Infra;
+			sourceTree = "<group>";
+		};
+		4A06B60F22B4014300BDBA18 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B61522B401FB00BDBA18 /* MockAccountRepositoryImpl.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		4A06B61122B4015300BDBA18 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B61222B4018300BDBA18 /* AccountRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,9 +362,12 @@
 			files = (
 				4A06B60822B3FCC900BDBA18 /* LoginPresenter.swift in Sources */,
 				4A06B60122B3EA6B00BDBA18 /* LoginViewController.swift in Sources */,
+				4A06B61622B401FB00BDBA18 /* MockAccountRepositoryImpl.swift in Sources */,
 				4A06B60622B3F6FA00BDBA18 /* Logger.swift in Sources */,
+				4A06B61322B4018300BDBA18 /* AccountRepository.swift in Sources */,
 				4A06B60B22B3FF6600BDBA18 /* Optional+Extenstion.swift in Sources */,
 				4A06B5D022B3E44200BDBA18 /* AppDelegate.swift in Sources */,
+				4A06B61822B4040400BDBA18 /* AuthenticationUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
