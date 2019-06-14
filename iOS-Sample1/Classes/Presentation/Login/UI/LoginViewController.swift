@@ -8,6 +8,11 @@ final class LoginViewController: UIViewController {
   @IBOutlet private var loginButton: UIButton!
 
   private let disposeBag = DisposeBag()
+  private lazy var presenter: LoginPresenter = {
+    let presenter = LoginPresenter()
+    presenter.view = self
+    return presenter
+  }()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -52,5 +57,23 @@ private extension LoginViewController {
 private extension LoginViewController {
   @IBAction func tapLoginButton(_: UIButton) {
     log.d("clicked Log In Button")
+    presenter.tapLogInButton(email: emailTextField.text.orEmpty, password: passwordTextField.text.orEmpty)
+  }
+}
+
+// MARK: Presenterからの通知
+
+extension LoginViewController: LoginView {
+  func showFullScreenLoading() {
+    log.d("showFullScreenLoading")
+  }
+
+  func hideFullScreenLoading() {
+    log.d("hideFullScreenLoading")
+  }
+
+  func showAlert(title: String, handler: (() -> Void)?) {
+    log.d("showAlert : \(title)")
+    handler?()
   }
 }
