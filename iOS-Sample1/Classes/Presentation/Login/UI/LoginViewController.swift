@@ -19,15 +19,26 @@ final class LoginViewController: UIViewController {
 
 private extension LoginViewController {
   func setupBinding() {
-    let emailObservable = emailTextField.rx.text.orEmpty.asDriver().asObservable()
-    let passwordObservable = passwordTextField.rx.text.orEmpty.asDriver().asObservable()
+    let emailObservable = emailTextField.rx.text.orEmpty.distinctUntilChanged()
+    let passwordObservable = passwordTextField.rx.text.orEmpty.distinctUntilChanged()
 
-    Observable
+    let tappableObservable = Observable
       .combineLatest(emailObservable, passwordObservable)
       .map { email, password -> Bool in
-        !email.isEmpty && !password.isEmpty
+        log.i("\(email) : \(password)")
+        return !email.isEmpty && !password.isEmpty
       }
+      .share()
+
+    tappableObservable
       .bind(to: loginButton.rx.isEnabled)
+      .disposed(by: disposeBag)
+
+    tappableObservable
+      .map { tappable -> UIColor in
+        tappable ? UIColor.orange : UIColor.darkGray
+      }
+      .bind(to: loginButton.rx.backgroundColor)
       .disposed(by: disposeBag)
   }
 }
