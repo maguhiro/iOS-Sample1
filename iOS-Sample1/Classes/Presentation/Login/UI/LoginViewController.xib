@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="iOS_Sample1" customModuleProvider="target">
             <connections>
+                <outlet property="emailTextField" destination="CYI-rX-4mD" id="nab-B1-Qew"/>
+                <outlet property="loginButton" destination="Oyv-Ke-Rae" id="ONQ-p9-0eb"/>
+                <outlet property="passwordTextField" destination="jyq-oV-CP9" id="6aL-A8-4nP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -79,6 +82,9 @@
                                     <integer key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="tapLoginButton:" destination="-1" eventType="touchUpInside" id="DhD-cd-RwS"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
