@@ -28,7 +28,7 @@ private extension LoginViewController {
         log.i("\(email) : \(password)")
         return !email.isEmpty && !password.isEmpty
       }
-      .share()
+      .publish()
 
     tappableObservable
       .bind(to: loginButton.rx.isEnabled)
@@ -39,6 +39,10 @@ private extension LoginViewController {
         tappable ? UIColor.orange : UIColor.darkGray
       }
       .bind(to: loginButton.rx.backgroundColor)
+      .disposed(by: disposeBag)
+
+    tappableObservable
+      .connect()
       .disposed(by: disposeBag)
   }
 }
