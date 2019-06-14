@@ -6,6 +6,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    setRootViewController()
     return true
   }
 
@@ -18,4 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationDidBecomeActive(_: UIApplication) {}
 
   func applicationWillTerminate(_: UIApplication) {}
+}
+
+private extension AppDelegate {
+  func setRootViewController() {
+    window = UIWindow(frame: UIScreen.main.bounds)
+    window?.rootViewController = LoginViewController()
+    window?.makeKeyAndVisible()
+  }
 }
