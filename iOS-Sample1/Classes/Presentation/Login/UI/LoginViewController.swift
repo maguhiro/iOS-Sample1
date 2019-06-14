@@ -36,7 +36,7 @@ private extension LoginViewController {
 
     tappableObservable
       .map { tappable -> UIColor in
-        tappable ? UIColor.orange : UIColor.darkGray
+        tappable ? UIColor.orange : UIColor.brown
       }
       .bind(to: loginButton.rx.backgroundColor)
       .disposed(by: disposeBag)
