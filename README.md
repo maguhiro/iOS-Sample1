@@ -16,3 +16,8 @@
 ## セットアップ
 
 1. `make setup`コマンドを叩く
+
+## 認証が通るID/PW
+
+- Email : hoge@gmail.com
+- Password : 123456
