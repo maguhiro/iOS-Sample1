@@ -69,6 +69,7 @@ private extension LoginViewController {
 private extension LoginViewController {
   @IBAction func tapLoginButton(_: UIButton) {
     log.d("clicked Log In Button")
+    view.endEditing(true)
     presenter.tapLogInButton(email: emailTextField.text.orEmpty, password: passwordTextField.text.orEmpty)
   }
 
