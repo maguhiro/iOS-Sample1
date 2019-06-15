@@ -8,8 +8,8 @@ final class ClockTickView: UIView {
 
   private var imageViewList = [UIImageView]()
 
-  private var startTime: CFTimeInterval?
-  private var firstTapPoint: CGPoint?
+  private var animationStartTime: CFTimeInterval?
+  private var startGesturePoint: CGPoint?
   private var pauseFlg = false
   private var pauseDegree: Double?
 
@@ -29,18 +29,19 @@ final class ClockTickView: UIView {
     }
 
     let radius = (min(rect.width, rect.height) - imageSize) / 2
+    updateImageViewListFrame(rect, radius: radius)
+    drawCircle(rect, radius: radius)
+  }
+}
 
-    let imageViewCount = imageViewList.count
-    let angleInterval = 360.0 / Double(imageViewCount)
-    let imageViewSize = CGSize(width: imageSize, height: imageSize)
+private extension ClockTickView {
+  func initializeView() {
+    isUserInteractionEnabled = true
+    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panAction(_:)))
+    addGestureRecognizer(panGesture)
+  }
 
-    imageViewList.enumerated().forEach { offset, imageView in
-      let degree = angleInterval * Double(offset)
-      let imageCenterPoint = Math.calculatePoint(center: rect.center, radius: Double(radius), degree: degree)
-      let rect = CGRect(center: imageCenterPoint, size: imageViewSize)
-      imageView.frame = rect
-    }
-
+  func drawCircle(_ rect: CGRect, radius: CGFloat) {
     let circle = UIBezierPath(arcCenter: rect.center,
                               radius: radius,
                               startAngle: CGFloat(Math.radian(from: 0.0)),
@@ -53,64 +54,8 @@ final class ClockTickView: UIView {
     circle.lineCapStyle = .round
     circle.stroke()
   }
-}
 
-private extension ClockTickView {
-  func initializeView() {
-    isUserInteractionEnabled = true
-    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panAction(_:)))
-    addGestureRecognizer(panGesture)
-  }
-
-  @objc
-  func panAction(_ sender: UIPanGestureRecognizer) {
-    switch sender.state {
-    case .began:
-      let firstTapPoint = sender.location(in: self)
-      self.firstTapPoint = firstTapPoint
-      if !isGestureArea(firstTapPoint) {
-        return
-      }
-
-      if !pauseFlg {
-        pauseFlg = true
-        stopAnimation()
-      }
-    case .ended:
-      if pauseFlg {
-        pauseFlg = false
-        restartAnimation()
-      }
-    case .changed:
-      if let firstTapPoint = firstTapPoint {
-        let currentPoint = sender.location(in: self)
-        let currentDegree = Math.calculateDegree(center: bounds.center, to: currentPoint)
-        let firstDegree = Math.calculateDegree(center: bounds.center, to: firstTapPoint)
-        moveTransform(degree: currentDegree - firstDegree)
-      }
-    default:
-      break
-    }
-  }
-
-  func isGestureArea(_ tapPoint: CGPoint) -> Bool {
-    let distance = Math.calculateDistance(from: bounds.center, to: tapPoint)
-    let radius = Double(min(bounds.width, bounds.height) / 2)
-    return distance <= radius
-  }
-}
-
-extension ClockTickView {
-  func startAnimation(urlList: [URL]) {
-    addIcon(urlList: urlList)
-    setNeedsDisplay()
-
-    startTime = layer.convertTime(CACurrentMediaTime(), from: nil)
-    startAnimation(view: self)
-    imageViewList.forEach { startAnimation(view: $0, isReverse: true) }
-  }
-
-  private func addIcon(urlList: [URL]) {
+  func addImageView(urlList: [URL]) {
     let options = ImageLoadingOptions(transition: .fadeIn(duration: 0.5))
     urlList.forEach { url in
       let imageView = UIImageView(frame: .zero)
@@ -122,6 +67,107 @@ extension ClockTickView {
 
       imageViewList.append(imageView)
     }
+  }
+
+  func updateImageViewListFrame(_ rect: CGRect, radius: CGFloat) {
+    let imageViewCount = imageViewList.count
+    let degreeInterval = 360.0 / Double(imageViewCount)
+    let imageViewSize = CGSize(width: imageSize, height: imageSize)
+
+    imageViewList.enumerated().forEach { offset, imageView in
+      let degree = degreeInterval * Double(offset)
+      let imageCenterPoint = Math.calculatePoint(center: rect.center, radius: Double(radius), degree: degree)
+      let rect = CGRect(center: imageCenterPoint, size: imageViewSize)
+      imageView.frame = rect
+    }
+  }
+
+  @objc
+  func panAction(_ sender: UIPanGestureRecognizer) {
+    switch sender.state {
+    case .began:
+      startPanGesture(sender.location(in: self))
+    case .ended:
+      endPanGesture()
+    case .changed:
+      changePanGesturePoint(sender.location(in: self))
+    default:
+      break
+    }
+  }
+
+  func isGestureArea(_ tapPoint: CGPoint) -> Bool {
+    let distance = Math.calculateDistance(from: bounds.center, to: tapPoint)
+    let radius = Double(min(bounds.width, bounds.height) / 2)
+    return distance <= radius
+  }
+
+  func startPanGesture(_ startPoint: CGPoint) {
+    if !isGestureArea(startPoint) {
+      return
+    }
+
+    if !pauseFlg {
+      startGesturePoint = startPoint
+      pauseFlg = true
+      stopAnimation()
+    }
+  }
+
+  func changePanGesturePoint(_ point: CGPoint) {
+    guard let startGesturePoint = startGesturePoint else {
+      return
+    }
+    guard let pauseDegree = pauseDegree else {
+      return
+    }
+
+    let currentDegree = Math.calculateDegree(center: bounds.center, to: point)
+    let startDegree = Math.calculateDegree(center: bounds.center, to: startGesturePoint)
+    let percentage = convertMovePercentage(panStartDegree: startDegree, panCurrentDegree: currentDegree, animationPauseDegree: pauseDegree)
+    moveTransform(percentage: percentage)
+  }
+
+  func convertMovePercentage(panStartDegree: Double, panCurrentDegree: Double, animationPauseDegree: Double) -> Double {
+    let panDiffDegree: Double = {
+      let degree = panCurrentDegree - panStartDegree
+      if degree < 0 {
+        return degree + 360.0
+      }
+      return degree
+    }()
+
+    let moveDegree: Double = {
+      let degree = panDiffDegree + animationPauseDegree
+      if degree < 0 {
+        return degree + 360.0
+      }
+      if 360 <= degree {
+        return degree - 360.0
+      }
+      return degree
+    }()
+
+    return moveDegree / 360.0 * 100
+  }
+
+  func endPanGesture() {
+    if pauseFlg {
+      startGesturePoint = nil
+      pauseFlg = false
+      restartAnimation()
+    }
+  }
+}
+
+extension ClockTickView {
+  func startAnimation(urlList: [URL]) {
+    addImageView(urlList: urlList)
+    setNeedsDisplay()
+
+    animationStartTime = layer.convertTime(CACurrentMediaTime(), from: nil)
+    startAnimation(view: self)
+    imageViewList.forEach { startAnimation(view: $0, isReverse: true) }
   }
 
   private func startAnimation(view: UIView, isReverse: Bool = false) {
@@ -155,39 +201,17 @@ private extension ClockTickView {
 }
 
 private extension ClockTickView {
-  func moveTransform(degree: Double) {
-    guard let pauseDegree = pauseDegree else {
-      return
-    }
-
-    let tmpDegree: Double = {
-      if degree < 0 {
-        return degree + 360.0
-      }
-      return degree
-    }()
-
-    moveTransform(view: self, degree: tmpDegree + pauseDegree)
-    imageViewList.forEach { moveTransform(view: $0, degree: tmpDegree + pauseDegree) }
+  func moveTransform(percentage: Double) {
+    moveTransform(view: self, percentage: percentage)
+    imageViewList.forEach { moveTransform(view: $0, percentage: percentage) }
   }
 
-  func moveTransform(view: UIView, degree: Double) {
+  func moveTransform(view: UIView, percentage: Double) {
     let layer = view.layer
 
-    let tmpDegree: Double = {
-      if degree < 0 {
-        return degree + 360.0
-      }
-      if 360 <= degree {
-        return degree - 360.0
-      }
-      return degree
-    }()
-
-    let percentage = tmpDegree / 360.0 * 100
-    let diffTime = Double(percentage) / rotationDuration
     // swiftlint:disable force_unwrapping
-    layer.timeOffset = startTime! + diffTime
+    let diffTime = percentage / rotationDuration
+    layer.timeOffset = animationStartTime! + diffTime
     // swiftlint:enable force_unwrapping
   }
 }
