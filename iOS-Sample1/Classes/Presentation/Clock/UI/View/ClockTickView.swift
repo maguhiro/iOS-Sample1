@@ -1,8 +1,10 @@
 import UIKit
 
 final class ClockTickView: UIView {
+  private let circleLineWidth: CGFloat = 2.0
+
   override func draw(_ rect: CGRect) {
-    let radius = min(rect.width, rect.height) / 2
+    let radius = (min(rect.width, rect.height) - circleLineWidth) / 2
 
     let circle = UIBezierPath(arcCenter: rect.center,
                               radius: radius,
@@ -12,7 +14,7 @@ final class ClockTickView: UIView {
     let color = UIColor.white
     color.setStroke()
 
-    circle.lineWidth = 2.0
+    circle.lineWidth = circleLineWidth
     circle.lineCapStyle = .round
     circle.stroke()
   }
