@@ -121,6 +121,8 @@ force_unwrapping:
 identifier_name:
   excluded:
     - id
+    - x
+    - y
 
 legacy_cggeometry_functions:
   severity: error
