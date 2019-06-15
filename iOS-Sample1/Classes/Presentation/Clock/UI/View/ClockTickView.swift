@@ -5,7 +5,7 @@ final class ClockTickView: UIView {
   private let rotationDuration: Double = 10.0
   private let imageSize: CGFloat = 50.0
 
-  private let imageView = UIImageView()
+  private let imageViewList = [UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView()]
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -20,8 +20,16 @@ final class ClockTickView: UIView {
   override func draw(_ rect: CGRect) {
     let radius = (min(rect.width, rect.height) - imageSize) / 2
 
-    let imageViewRect = CGRect(x: rect.center.x - imageSize / 2, y: 0, width: imageSize, height: imageSize)
-    imageView.frame = imageViewRect
+    let imageViewCount = imageViewList.count
+    let angleInterval = 360.0 / Double(imageViewCount)
+    let imageViewSize = CGSize(width: imageSize, height: imageSize)
+
+    imageViewList.enumerated().forEach { offset, imageView in
+      let degree = angleInterval * Double(offset)
+      let imageCenterPoint = calculatePoint(from: rect.center, radius: Double(radius), degree: degree)
+      let rect = CGRect(center: imageCenterPoint, size: imageViewSize)
+      imageView.frame = rect
+    }
 
     let circle = UIBezierPath(arcCenter: rect.center,
                               radius: radius,
@@ -40,7 +48,7 @@ final class ClockTickView: UIView {
 extension ClockTickView {
   func startAnimation() {
     startCircleAnimation()
-    startImageAnimation(imageView)
+    imageViewList.forEach { startImageAnimation($0) }
   }
 
   private func startCircleAnimation() {
@@ -49,8 +57,8 @@ extension ClockTickView {
     animation.fillMode = .forwards
     animation.repeatCount = .infinity
     animation.duration = rotationDuration
-    animation.fromValue = 0
-    animation.toValue = CGFloat(Double.pi / 180) * 360
+    animation.fromValue = calculateRadian(degree: 0.0)
+    animation.toValue = calculateRadian(degree: 360.0)
 
     layer.add(animation, forKey: nil)
   }
@@ -61,8 +69,8 @@ extension ClockTickView {
     animation.fillMode = .forwards
     animation.repeatCount = .infinity
     animation.duration = rotationDuration
-    animation.fromValue = CGFloat(Double.pi / 180) * 360
-    animation.toValue = 0
+    animation.fromValue = calculateRadian(degree: 360.0)
+    animation.toValue = calculateRadian(degree: 0.0)
 
     imageView.layer.add(animation, forKey: nil)
   }
@@ -70,13 +78,27 @@ extension ClockTickView {
 
 private extension ClockTickView {
   func initializeView() {
-    imageView.image = UIImage(named: "Baby")
-    imageView.clipsToBounds = true
-    imageView.layer.cornerRadius = imageSize / 2.0
-    addSubview(imageView)
+    imageViewList.forEach { imageView in
+      imageView.image = UIImage(named: "Baby")
+      imageView.clipsToBounds = true
+      imageView.layer.cornerRadius = imageSize / 2.0
+      addSubview(imageView)
+    }
+  }
+
+  func calculatePoint(from centerPoint: CGPoint, radius: Double, degree: Double) -> CGPoint {
+    let radian = degree * Double.pi / 180.0
+
+    let x = (sin(radian) * radius) + Double(centerPoint.x)
+    let y = (cos(radian) * radius) + Double(centerPoint.y)
+    return CGPoint(x: x, y: y)
   }
 
   func calculateAngle(degree: CGFloat) -> CGFloat {
     return CGFloat(Double.pi) * 2 * degree / 360.0
+  }
+
+  func calculateRadian(degree: CGFloat) -> CGFloat {
+    return degree * CGFloat(Double.pi) / 180.0
   }
 }
