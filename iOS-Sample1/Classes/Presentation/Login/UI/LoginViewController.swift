@@ -18,6 +18,7 @@ final class LoginViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    initializeLayout()
     setupBinding()
   }
 }
@@ -25,6 +26,15 @@ final class LoginViewController: UIViewController {
 // MARK: Viewのレイアウト
 
 private extension LoginViewController {
+  func initializeLayout() {
+    emailTextField.delegate = self
+    passwordTextField.delegate = self
+
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard(_:)))
+    view.addGestureRecognizer(tapGesture)
+    view.isUserInteractionEnabled = true
+  }
+
   func setupBinding() {
     let emailObservable = emailTextField.rx.text.orEmpty.distinctUntilChanged()
     let passwordObservable = passwordTextField.rx.text.orEmpty.distinctUntilChanged()
@@ -60,6 +70,26 @@ private extension LoginViewController {
   @IBAction func tapLoginButton(_: UIButton) {
     log.d("clicked Log In Button")
     presenter.tapLogInButton(email: emailTextField.text.orEmpty, password: passwordTextField.text.orEmpty)
+  }
+
+  @objc func closeKeyboard(_: UITapGestureRecognizer) {
+    view.endEditing(true)
+  }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    switch textField {
+    case emailTextField:
+      passwordTextField.becomeFirstResponder()
+    default:
+      textField.resignFirstResponder()
+      if loginButton.isEnabled {
+        tapLoginButton(loginButton)
+      }
+    }
+
+    return true
   }
 }
 
