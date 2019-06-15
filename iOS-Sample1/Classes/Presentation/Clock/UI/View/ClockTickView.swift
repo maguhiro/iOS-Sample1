@@ -61,9 +61,14 @@ private extension ClockTickView {
     addGestureRecognizer(panGesture)
   }
 
-  @objc func panAction(_ sender: UIPanGestureRecognizer) {
+  @objc
+  func panAction(_ sender: UIPanGestureRecognizer) {
     switch sender.state {
     case .began:
+      if !isGestureArea(sender.location(in: self)) {
+        return
+      }
+
       if !pauseFlg {
         pauseFlg = true
         stopAnimation()
@@ -76,6 +81,33 @@ private extension ClockTickView {
     default:
       break
     }
+  }
+
+  func isGestureArea(_ tapPoint: CGPoint) -> Bool {
+    let centerPoint = bounds.center
+
+    let distance = calculateDistance(from: centerPoint, to: tapPoint)
+    let radius = Double(min(bounds.width, bounds.height) / 2)
+
+    return distance <= radius
+  }
+
+  // 点A(x1, y1)から点B(x2, y2)間の距離
+  // 計算式 : ((x2 - x1)^2 + (y2 - y1)^2) の平方根
+  func calculateDistance(from centerPoint: CGPoint, to targetPoint: CGPoint) -> Double {
+    let x = Double(targetPoint.x - centerPoint.x)
+    let y = Double(targetPoint.y - centerPoint.y)
+
+    return sqrt(pow(x, 2.0) + pow(y, 2.0))
+  }
+
+  func calculateRadian(from centerPoint: CGPoint, to targetPoint: CGPoint) -> Double {
+    return atan2(Double(targetPoint.y - centerPoint.y), Double(targetPoint.x - targetPoint.y))
+  }
+
+  func calculateDegree(from centerPoint: CGPoint, to targetPoint: CGPoint) -> Double {
+    let radian = calculateRadian(from: centerPoint, to: targetPoint)
+    return radian * 180.0 / Double.pi
   }
 
   func calculatePoint(from centerPoint: CGPoint, radius: Double, degree: Double) -> CGPoint {
