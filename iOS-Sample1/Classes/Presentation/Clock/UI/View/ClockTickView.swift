@@ -1,3 +1,4 @@
+import Nuke
 import UIKit
 
 final class ClockTickView: UIView {
@@ -147,9 +148,11 @@ extension ClockTickView {
   }
 
   func addIcon(urlList: [URL]) {
-    urlList.forEach { _ in
+    let options = ImageLoadingOptions(transition: .fadeIn(duration: 0.5))
+    urlList.forEach { url in
       let imageView = UIImageView(frame: .zero)
-      imageView.image = UIImage(named: "Baby")
+      imageView.backgroundColor = UIColor.gray
+      Nuke.loadImage(with: url, options: options, into: imageView)
       imageView.clipsToBounds = true
       imageView.layer.cornerRadius = imageSize / 2.0
       addSubview(imageView)
