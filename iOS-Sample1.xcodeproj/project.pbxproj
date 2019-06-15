@@ -34,6 +34,10 @@
 		4A06B62722B47D3300BDBA18 /* ClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B62522B47D3300BDBA18 /* ClockViewController.xib */; };
 		4A06B62B22B481AA00BDBA18 /* ClockTickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B62A22B481AA00BDBA18 /* ClockTickView.swift */; };
 		4A06B62D22B482B100BDBA18 /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B62C22B482B100BDBA18 /* CGRect+Extension.swift */; };
+		4A06B63122B5494000BDBA18 /* ClockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B63022B5494000BDBA18 /* ClockPresenter.swift */; };
+		4A06B63322B5496700BDBA18 /* ClockIconUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B63222B5496700BDBA18 /* ClockIconUseCase.swift */; };
+		4A06B63522B5497E00BDBA18 /* ClockIconRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B63422B5497E00BDBA18 /* ClockIconRepository.swift */; };
+		4A06B63722B549DF00BDBA18 /* MockClockIconRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B63622B549DF00BDBA18 /* MockClockIconRepositoryImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +70,10 @@
 		4A06B62522B47D3300BDBA18 /* ClockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClockViewController.xib; sourceTree = "<group>"; };
 		4A06B62A22B481AA00BDBA18 /* ClockTickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTickView.swift; sourceTree = "<group>"; };
 		4A06B62C22B482B100BDBA18 /* CGRect+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
+		4A06B63022B5494000BDBA18 /* ClockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockPresenter.swift; sourceTree = "<group>"; };
+		4A06B63222B5496700BDBA18 /* ClockIconUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockIconUseCase.swift; sourceTree = "<group>"; };
+		4A06B63422B5497E00BDBA18 /* ClockIconRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockIconRepository.swift; sourceTree = "<group>"; };
+		4A06B63622B549DF00BDBA18 /* MockClockIconRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClockIconRepositoryImpl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				4A06B61722B4040400BDBA18 /* AuthenticationUseCase.swift */,
+				4A06B63222B5496700BDBA18 /* ClockIconUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -249,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				4A06B61522B401FB00BDBA18 /* MockAccountRepositoryImpl.swift */,
+				4A06B63622B549DF00BDBA18 /* MockClockIconRepositoryImpl.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -257,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				4A06B61222B4018300BDBA18 /* AccountRepository.swift */,
+				4A06B63422B5497E00BDBA18 /* ClockIconRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -290,6 +301,7 @@
 		4A06B62222B47D0400BDBA18 /* Clock */ = {
 			isa = PBXGroup;
 			children = (
+				4A06B62F22B5492200BDBA18 /* Presenter */,
 				4A06B62322B47D1300BDBA18 /* UI */,
 			);
 			path = Clock;
@@ -311,6 +323,14 @@
 				4A06B62A22B481AA00BDBA18 /* ClockTickView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		4A06B62F22B5492200BDBA18 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B63022B5494000BDBA18 /* ClockPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,15 +455,19 @@
 				4A06B60122B3EA6B00BDBA18 /* LoginViewController.swift in Sources */,
 				4A06B61622B401FB00BDBA18 /* MockAccountRepositoryImpl.swift in Sources */,
 				4A06B60622B3F6FA00BDBA18 /* Logger.swift in Sources */,
+				4A06B63322B5496700BDBA18 /* ClockIconUseCase.swift in Sources */,
 				4A06B62D22B482B100BDBA18 /* CGRect+Extension.swift in Sources */,
 				4A06B62622B47D3300BDBA18 /* ClockViewController.swift in Sources */,
 				4A06B61322B4018300BDBA18 /* AccountRepository.swift in Sources */,
 				4A06B61D22B471DD00BDBA18 /* IndicatorViewController.swift in Sources */,
 				4A06B62122B47AAA00BDBA18 /* UIAlertController+Extension.swift in Sources */,
 				4A06B62B22B481AA00BDBA18 /* ClockTickView.swift in Sources */,
+				4A06B63722B549DF00BDBA18 /* MockClockIconRepositoryImpl.swift in Sources */,
 				4A06B60B22B3FF6600BDBA18 /* Optional+Extenstion.swift in Sources */,
 				4A06B5D022B3E44200BDBA18 /* AppDelegate.swift in Sources */,
 				4A06B61822B4040400BDBA18 /* AuthenticationUseCase.swift in Sources */,
+				4A06B63122B5494000BDBA18 /* ClockPresenter.swift in Sources */,
+				4A06B63522B5497E00BDBA18 /* ClockIconRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

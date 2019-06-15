@@ -5,7 +5,7 @@ final class ClockTickView: UIView {
   private let rotationDuration: Double = 10.0
   private let imageSize: CGFloat = 50.0
 
-  private let imageViewList = [UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView()]
+  private var imageViewList = [UIImageView]()
 
   private var startTime: CFTimeInterval?
   private var firstTapPoint: CGPoint?
@@ -23,6 +23,10 @@ final class ClockTickView: UIView {
   }
 
   override func draw(_ rect: CGRect) {
+    if imageViewList.isEmpty {
+      return
+    }
+
     let radius = (min(rect.width, rect.height) - imageSize) / 2
 
     let imageViewCount = imageViewList.count
@@ -52,13 +56,6 @@ final class ClockTickView: UIView {
 
 private extension ClockTickView {
   func initializeView() {
-    imageViewList.forEach { imageView in
-      imageView.image = UIImage(named: "Baby")
-      imageView.clipsToBounds = true
-      imageView.layer.cornerRadius = imageSize / 2.0
-      addSubview(imageView)
-    }
-
     isUserInteractionEnabled = true
     let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panAction(_:)))
     addGestureRecognizer(panGesture)
@@ -140,10 +137,25 @@ private extension ClockTickView {
 }
 
 extension ClockTickView {
-  func startAnimation() {
+  func startAnimation(urlList: [URL]) {
+    addIcon(urlList: urlList)
+    setNeedsDisplay()
+
     startTime = layer.convertTime(CACurrentMediaTime(), from: nil)
     startCircleAnimation()
     imageViewList.forEach { startImageAnimation($0) }
+  }
+
+  func addIcon(urlList: [URL]) {
+    urlList.forEach { _ in
+      let imageView = UIImageView(frame: .zero)
+      imageView.image = UIImage(named: "Baby")
+      imageView.clipsToBounds = true
+      imageView.layer.cornerRadius = imageSize / 2.0
+      addSubview(imageView)
+
+      imageViewList.append(imageView)
+    }
   }
 
   private func startCircleAnimation() {
