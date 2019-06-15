@@ -7,6 +7,8 @@ final class ClockTickView: UIView {
 
   private let imageViewList = [UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView(), UIImageView()]
 
+  private var pauseFlg = false
+
   override init(frame: CGRect) {
     super.init(frame: frame)
     initializeView()
@@ -45,6 +47,54 @@ final class ClockTickView: UIView {
   }
 }
 
+private extension ClockTickView {
+  func initializeView() {
+    imageViewList.forEach { imageView in
+      imageView.image = UIImage(named: "Baby")
+      imageView.clipsToBounds = true
+      imageView.layer.cornerRadius = imageSize / 2.0
+      addSubview(imageView)
+    }
+
+    isUserInteractionEnabled = true
+    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panAction(_:)))
+    addGestureRecognizer(panGesture)
+  }
+
+  @objc func panAction(_ sender: UIPanGestureRecognizer) {
+    switch sender.state {
+    case .began:
+      if !pauseFlg {
+        pauseFlg = true
+        stopAnimation()
+      }
+    case .ended:
+      if pauseFlg {
+        pauseFlg = false
+        restartAnimation()
+      }
+    default:
+      break
+    }
+  }
+
+  func calculatePoint(from centerPoint: CGPoint, radius: Double, degree: Double) -> CGPoint {
+    let radian = degree * Double.pi / 180.0
+
+    let x = (sin(radian) * radius) + Double(centerPoint.x)
+    let y = (cos(radian) * radius) + Double(centerPoint.y)
+    return CGPoint(x: x, y: y)
+  }
+
+  func calculateAngle(degree: CGFloat) -> CGFloat {
+    return CGFloat(Double.pi) * 2 * degree / 360.0
+  }
+
+  func calculateRadian(degree: CGFloat) -> CGFloat {
+    return degree * CGFloat(Double.pi) / 180.0
+  }
+}
+
 extension ClockTickView {
   func startAnimation() {
     startCircleAnimation()
@@ -77,28 +127,34 @@ extension ClockTickView {
 }
 
 private extension ClockTickView {
-  func initializeView() {
-    imageViewList.forEach { imageView in
-      imageView.image = UIImage(named: "Baby")
-      imageView.clipsToBounds = true
-      imageView.layer.cornerRadius = imageSize / 2.0
-      addSubview(imageView)
-    }
+  func stopAnimation() {
+    stopAnimation(view: self)
+    imageViewList.forEach { stopAnimation(view: $0) }
   }
 
-  func calculatePoint(from centerPoint: CGPoint, radius: Double, degree: Double) -> CGPoint {
-    let radian = degree * Double.pi / 180.0
+  func stopAnimation(view: UIView) {
+    let layer = view.layer
+    let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
+    layer.timeOffset = pausedTime
+    layer.speed = 0.0
+  }
+}
 
-    let x = (sin(radian) * radius) + Double(centerPoint.x)
-    let y = (cos(radian) * radius) + Double(centerPoint.y)
-    return CGPoint(x: x, y: y)
+private extension ClockTickView {
+  func restartAnimation() {
+    restartAnimation(view: self)
+    imageViewList.forEach { restartAnimation(view: $0) }
   }
 
-  func calculateAngle(degree: CGFloat) -> CGFloat {
-    return CGFloat(Double.pi) * 2 * degree / 360.0
-  }
+  func restartAnimation(view: UIView) {
+    let layer = view.layer
+    let pausedTime = layer.timeOffset
 
-  func calculateRadian(degree: CGFloat) -> CGFloat {
-    return degree * CGFloat(Double.pi) / 180.0
+    layer.speed = 1.0
+    layer.timeOffset = 0.0
+    layer.beginTime = 0.0
+
+    let timeSincePause = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+    layer.beginTime = timeSincePause
   }
 }
