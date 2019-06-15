@@ -36,15 +36,15 @@ final class ClockTickView: UIView {
 
     imageViewList.enumerated().forEach { offset, imageView in
       let degree = angleInterval * Double(offset)
-      let imageCenterPoint = calculatePoint(from: rect.center, radius: Double(radius), degree: degree)
+      let imageCenterPoint = Math.calculatePoint(center: rect.center, radius: Double(radius), degree: degree)
       let rect = CGRect(center: imageCenterPoint, size: imageViewSize)
       imageView.frame = rect
     }
 
     let circle = UIBezierPath(arcCenter: rect.center,
                               radius: radius,
-                              startAngle: calculateRadian(degree: 0.0),
-                              endAngle: calculateRadian(degree: 360.0),
+                              startAngle: CGFloat(Math.radian(from: 0.0)),
+                              endAngle: CGFloat(Math.radian(from: 360.0)),
                               clockwise: true)
     let color = UIColor.white
     color.setStroke()
@@ -84,8 +84,8 @@ private extension ClockTickView {
     case .changed:
       if let firstTapPoint = firstTapPoint {
         let currentPoint = sender.location(in: self)
-        let currentDegree = calculateDegree(from: bounds.center, to: currentPoint)
-        let firstDegree = calculateDegree(from: bounds.center, to: firstTapPoint)
+        let currentDegree = Math.calculateDegree(center: bounds.center, to: currentPoint)
+        let firstDegree = Math.calculateDegree(center: bounds.center, to: firstTapPoint)
         moveTransform(degree: currentDegree - firstDegree)
       }
     default:
@@ -94,46 +94,9 @@ private extension ClockTickView {
   }
 
   func isGestureArea(_ tapPoint: CGPoint) -> Bool {
-    let centerPoint = bounds.center
-
-    let distance = calculateDistance(from: centerPoint, to: tapPoint)
+    let distance = Math.calculateDistance(from: bounds.center, to: tapPoint)
     let radius = Double(min(bounds.width, bounds.height) / 2)
-
     return distance <= radius
-  }
-
-  // 点A(x1, y1)から点B(x2, y2)間の距離
-  // 計算式 : ((x2 - x1)^2 + (y2 - y1)^2) の平方根
-  func calculateDistance(from centerPoint: CGPoint, to targetPoint: CGPoint) -> Double {
-    let x = Double(targetPoint.x - centerPoint.x)
-    let y = Double(targetPoint.y - centerPoint.y)
-
-    return sqrt(pow(x, 2.0) + pow(y, 2.0))
-  }
-
-  func calculateRadian(from centerPoint: CGPoint, to targetPoint: CGPoint) -> Double {
-    return atan2(Double(targetPoint.y - centerPoint.y), Double(targetPoint.x - centerPoint.y))
-  }
-
-  func calculateDegree(from centerPoint: CGPoint, to targetPoint: CGPoint) -> Double {
-    let radian = calculateRadian(from: centerPoint, to: targetPoint)
-    return radian * 180.0 / Double.pi
-  }
-
-  func calculatePoint(from centerPoint: CGPoint, radius: Double, degree: Double) -> CGPoint {
-    let radian = degree * Double.pi / 180.0
-
-    let x = (sin(radian) * radius) + Double(centerPoint.x)
-    let y = (cos(radian) * radius) + Double(centerPoint.y)
-    return CGPoint(x: x, y: y)
-  }
-
-  func calculateRadian(degree: CGFloat) -> CGFloat {
-    return degree * CGFloat(Double.pi) / 180.0
-  }
-
-  func calculateDegree(radian: CGFloat) -> CGFloat {
-    return radian * 180.0 / CGFloat(Double.pi)
   }
 }
 
@@ -143,11 +106,11 @@ extension ClockTickView {
     setNeedsDisplay()
 
     startTime = layer.convertTime(CACurrentMediaTime(), from: nil)
-    startCircleAnimation()
-    imageViewList.forEach { startImageAnimation($0) }
+    startAnimation(view: self)
+    imageViewList.forEach { startAnimation(view: $0, isReverse: true) }
   }
 
-  func addIcon(urlList: [URL]) {
+  private func addIcon(urlList: [URL]) {
     let options = ImageLoadingOptions(transition: .fadeIn(duration: 0.5))
     urlList.forEach { url in
       let imageView = UIImageView(frame: .zero)
@@ -161,28 +124,10 @@ extension ClockTickView {
     }
   }
 
-  private func startCircleAnimation() {
-    let animation = CABasicAnimation(keyPath: "transform.rotation")
-    animation.isRemovedOnCompletion = true
-    animation.fillMode = .forwards
-    animation.repeatCount = .infinity
-    animation.duration = rotationDuration
-    animation.fromValue = calculateRadian(degree: 0.0)
-    animation.toValue = calculateRadian(degree: 360.0)
-
+  private func startAnimation(view: UIView, isReverse: Bool = false) {
+    let animation = AnimationFactory.makeInfinityRotation(duration: rotationDuration, isReverse: isReverse)
+    let layer = view.layer
     layer.add(animation, forKey: nil)
-  }
-
-  private func startImageAnimation(_ imageView: UIImageView) {
-    let animation = CABasicAnimation(keyPath: "transform.rotation")
-    animation.isRemovedOnCompletion = true
-    animation.fillMode = .forwards
-    animation.repeatCount = .infinity
-    animation.duration = rotationDuration
-    animation.fromValue = calculateRadian(degree: 360.0)
-    animation.toValue = calculateRadian(degree: 0.0)
-
-    imageView.layer.add(animation, forKey: nil)
   }
 }
 
@@ -195,9 +140,7 @@ private extension ClockTickView {
 
   func getCurrentRotateDegree() -> Double? {
     if let transform = layer.presentation()?.transform {
-      let degree = calculateDegree(radian: atan2(transform.m12, transform.m11))
-      log.i(degree)
-      return Double(degree)
+      return Math.degree(from: Double(atan2(transform.m12, transform.m11)))
     }
 
     return nil
