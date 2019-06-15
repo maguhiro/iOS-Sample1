@@ -3,7 +3,7 @@ import UIKit
 
 final class ClockTickView: UIView {
   private let circleLineWidth: CGFloat = 2.0
-  private let rotationDuration: Double = 10.0
+  private let rotationDuration: Double = 60.0
   private let imageSize: CGFloat = 50.0
 
   private var imageViewList = [UIImageView]()
@@ -210,7 +210,7 @@ private extension ClockTickView {
     let layer = view.layer
 
     // swiftlint:disable force_unwrapping
-    let diffTime = percentage / rotationDuration
+    let diffTime = rotationDuration * percentage / 100
     layer.timeOffset = animationStartTime! + diffTime
     // swiftlint:enable force_unwrapping
   }
