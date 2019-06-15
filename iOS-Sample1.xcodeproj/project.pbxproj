@@ -29,6 +29,7 @@
 		4A06B61822B4040400BDBA18 /* AuthenticationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B61722B4040400BDBA18 /* AuthenticationUseCase.swift */; };
 		4A06B61D22B471DD00BDBA18 /* IndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B61B22B471DD00BDBA18 /* IndicatorViewController.swift */; };
 		4A06B61E22B471DD00BDBA18 /* IndicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B61C22B471DD00BDBA18 /* IndicatorViewController.xib */; };
+		4A06B62122B47AAA00BDBA18 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B62022B47AAA00BDBA18 /* UIAlertController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		4A06B61722B4040400BDBA18 /* AuthenticationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUseCase.swift; sourceTree = "<group>"; };
 		4A06B61B22B471DD00BDBA18 /* IndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorViewController.swift; sourceTree = "<group>"; };
 		4A06B61C22B471DD00BDBA18 /* IndicatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorViewController.xib; sourceTree = "<group>"; };
+		4A06B62022B47AAA00BDBA18 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				4A06B61922B471A600BDBA18 /* Core */,
+				4A06B61F22B47A7E00BDBA18 /* Extenstion */,
 				4A06B5FB22B3E9FD00BDBA18 /* Login */,
 			);
 			path = Presentation;
@@ -266,6 +269,14 @@
 			path = Indicator;
 			sourceTree = "<group>";
 		};
+		4A06B61F22B47A7E00BDBA18 /* Extenstion */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B62022B47AAA00BDBA18 /* UIAlertController+Extension.swift */,
+			);
+			path = Extenstion;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -389,6 +400,7 @@
 				4A06B60622B3F6FA00BDBA18 /* Logger.swift in Sources */,
 				4A06B61322B4018300BDBA18 /* AccountRepository.swift in Sources */,
 				4A06B61D22B471DD00BDBA18 /* IndicatorViewController.swift in Sources */,
+				4A06B62122B47AAA00BDBA18 /* UIAlertController+Extension.swift in Sources */,
 				4A06B60B22B3FF6600BDBA18 /* Optional+Extenstion.swift in Sources */,
 				4A06B5D022B3E44200BDBA18 /* AppDelegate.swift in Sources */,
 				4A06B61822B4040400BDBA18 /* AuthenticationUseCase.swift in Sources */,

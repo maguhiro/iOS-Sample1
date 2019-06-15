@@ -72,7 +72,8 @@ private extension LoginViewController {
     presenter.tapLogInButton(email: emailTextField.text.orEmpty, password: passwordTextField.text.orEmpty)
   }
 
-  @objc func closeKeyboard(_: UITapGestureRecognizer) {
+  @objc
+  func closeKeyboard(_: UITapGestureRecognizer) {
     view.endEditing(true)
   }
 }
@@ -105,7 +106,7 @@ extension LoginViewController: LoginView {
   }
 
   func showAlert(title: String, handler: (() -> Void)?) {
-    log.d("showAlert : \(title)")
-    handler?()
+    let alert = UIAlertController.makeOKAlert(title: title, handler: handler)
+    present(alert, animated: true)
   }
 }
