@@ -243,7 +243,9 @@ private extension ClockTickView {
 
     let percentage = tmpDegree / 360.0 * 100
     let diffTime = Double(percentage) / rotationDuration
+    // swiftlint:disable force_unwrapping
     layer.timeOffset = startTime! + diffTime
+    // swiftlint:enable force_unwrapping
   }
 }
 
