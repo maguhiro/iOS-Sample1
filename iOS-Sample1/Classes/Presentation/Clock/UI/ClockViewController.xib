@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ClockViewController" customModule="iOS_Sample1" customModuleProvider="target">
             <connections>
+                <outlet property="clockTickView" destination="eZB-74-EZp" id="LOF-CM-mDf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
