@@ -19,7 +19,21 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZB-74-EZp" customClass="ClockTickView" customModule="iOS_Sample1" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="241" width="414" height="414"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="eZB-74-EZp" secondAttribute="height" multiplier="1:1" id="Vuu-Ti-UjH"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="eZB-74-EZp" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Dlv-nY-VDv"/>
+                <constraint firstItem="eZB-74-EZp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Inl-8w-mMx"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eZB-74-EZp" secondAttribute="trailing" id="f6U-uK-EB7"/>
+                <constraint firstItem="eZB-74-EZp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="vMj-dJ-7ya"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
