@@ -7,6 +7,8 @@ final class LoginViewController: UIViewController {
   @IBOutlet private var passwordTextField: UITextField!
   @IBOutlet private var loginButton: UIButton!
 
+  private let indicatorVC = IndicatorViewController()
+
   private let disposeBag = DisposeBag()
   private lazy var presenter: LoginPresenter = {
     let presenter = LoginPresenter()
@@ -65,11 +67,11 @@ private extension LoginViewController {
 
 extension LoginViewController: LoginView {
   func showFullScreenLoading() {
-    log.d("showFullScreenLoading")
+    present(indicatorVC, animated: false)
   }
 
   func hideFullScreenLoading() {
-    log.d("hideFullScreenLoading")
+    indicatorVC.dismiss(animated: false)
   }
 
   func showAlert(title: String, handler: (() -> Void)?) {

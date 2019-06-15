@@ -27,6 +27,8 @@
 		4A06B61322B4018300BDBA18 /* AccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B61222B4018300BDBA18 /* AccountRepository.swift */; };
 		4A06B61622B401FB00BDBA18 /* MockAccountRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B61522B401FB00BDBA18 /* MockAccountRepositoryImpl.swift */; };
 		4A06B61822B4040400BDBA18 /* AuthenticationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B61722B4040400BDBA18 /* AuthenticationUseCase.swift */; };
+		4A06B61D22B471DD00BDBA18 /* IndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B61B22B471DD00BDBA18 /* IndicatorViewController.swift */; };
+		4A06B61E22B471DD00BDBA18 /* IndicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B61C22B471DD00BDBA18 /* IndicatorViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		4A06B61222B4018300BDBA18 /* AccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRepository.swift; sourceTree = "<group>"; };
 		4A06B61522B401FB00BDBA18 /* MockAccountRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccountRepositoryImpl.swift; sourceTree = "<group>"; };
 		4A06B61722B4040400BDBA18 /* AuthenticationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationUseCase.swift; sourceTree = "<group>"; };
+		4A06B61B22B471DD00BDBA18 /* IndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorViewController.swift; sourceTree = "<group>"; };
+		4A06B61C22B471DD00BDBA18 /* IndicatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,7 @@
 		4A06B5E622B3E7E000BDBA18 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4A06B61922B471A600BDBA18 /* Core */,
 				4A06B5FB22B3E9FD00BDBA18 /* Login */,
 			);
 			path = Presentation;
@@ -244,6 +249,23 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
+		4A06B61922B471A600BDBA18 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B61A22B471B500BDBA18 /* Indicator */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		4A06B61A22B471B500BDBA18 /* Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B61B22B471DD00BDBA18 /* IndicatorViewController.swift */,
+				4A06B61C22B471DD00BDBA18 /* IndicatorViewController.xib */,
+			);
+			path = Indicator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -308,6 +330,7 @@
 				4A06B5EB22B3E85500BDBA18 /* CarthageOutput.xcfilelist in Resources */,
 				4A06B60222B3EA6B00BDBA18 /* LoginViewController.xib in Resources */,
 				4A06B5DA22B3E44500BDBA18 /* LaunchScreen.storyboard in Resources */,
+				4A06B61E22B471DD00BDBA18 /* IndicatorViewController.xib in Resources */,
 				4A06B5D722B3E44500BDBA18 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +388,7 @@
 				4A06B61622B401FB00BDBA18 /* MockAccountRepositoryImpl.swift in Sources */,
 				4A06B60622B3F6FA00BDBA18 /* Logger.swift in Sources */,
 				4A06B61322B4018300BDBA18 /* AccountRepository.swift in Sources */,
+				4A06B61D22B471DD00BDBA18 /* IndicatorViewController.swift in Sources */,
 				4A06B60B22B3FF6600BDBA18 /* Optional+Extenstion.swift in Sources */,
 				4A06B5D022B3E44200BDBA18 /* AppDelegate.swift in Sources */,
 				4A06B61822B4040400BDBA18 /* AuthenticationUseCase.swift in Sources */,
