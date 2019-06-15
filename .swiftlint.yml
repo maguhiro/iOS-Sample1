@@ -9,6 +9,7 @@ excluded:
 disabled_rules:
   - superfluous_disable_command # 状況によってはdisableとしたい時もある。理由を明記すればOK
   - todo # fixme のみを対象とすることができたら解放したい
+  - trailing_comma # 要素が増えた場合にdiffが増えないようにするため
   - xctfail_message # XCTest使わない
 
 opt_in_rules:
