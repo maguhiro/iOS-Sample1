@@ -105,6 +105,19 @@ extension LoginViewController: LoginView {
     indicatorVC.dismiss(animated: false)
   }
 
+  func showErrorAlert(title: String) {
+    let alert = UIAlertController.makeOKAlert(title: title)
+    present(alert, animated: true)
+  }
+
+  func showSucceededAuthenticateAlert(title: String) {
+    let alert = UIAlertController.makeOKAlert(title: title) { [weak self] in
+      let clockVC = ClockViewController()
+      self?.present(clockVC, animated: false)
+    }
+    present(alert, animated: true)
+  }
+
   func showAlert(title: String, handler: (() -> Void)?) {
     let alert = UIAlertController.makeOKAlert(title: title, handler: handler)
     present(alert, animated: true)

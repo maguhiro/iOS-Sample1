@@ -30,6 +30,8 @@
 		4A06B61D22B471DD00BDBA18 /* IndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B61B22B471DD00BDBA18 /* IndicatorViewController.swift */; };
 		4A06B61E22B471DD00BDBA18 /* IndicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B61C22B471DD00BDBA18 /* IndicatorViewController.xib */; };
 		4A06B62122B47AAA00BDBA18 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B62022B47AAA00BDBA18 /* UIAlertController+Extension.swift */; };
+		4A06B62622B47D3300BDBA18 /* ClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A06B62422B47D3300BDBA18 /* ClockViewController.swift */; };
+		4A06B62722B47D3300BDBA18 /* ClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A06B62522B47D3300BDBA18 /* ClockViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		4A06B61B22B471DD00BDBA18 /* IndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorViewController.swift; sourceTree = "<group>"; };
 		4A06B61C22B471DD00BDBA18 /* IndicatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorViewController.xib; sourceTree = "<group>"; };
 		4A06B62022B47AAA00BDBA18 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		4A06B62422B47D3300BDBA18 /* ClockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockViewController.swift; sourceTree = "<group>"; };
+		4A06B62522B47D3300BDBA18 /* ClockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClockViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 		4A06B5E622B3E7E000BDBA18 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4A06B62222B47D0400BDBA18 /* Clock */,
 				4A06B61922B471A600BDBA18 /* Core */,
 				4A06B61F22B47A7E00BDBA18 /* Extenstion */,
 				4A06B5FB22B3E9FD00BDBA18 /* Login */,
@@ -277,6 +282,23 @@
 			path = Extenstion;
 			sourceTree = "<group>";
 		};
+		4A06B62222B47D0400BDBA18 /* Clock */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B62322B47D1300BDBA18 /* UI */,
+			);
+			path = Clock;
+			sourceTree = "<group>";
+		};
+		4A06B62322B47D1300BDBA18 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4A06B62422B47D3300BDBA18 /* ClockViewController.swift */,
+				4A06B62522B47D3300BDBA18 /* ClockViewController.xib */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -339,6 +361,7 @@
 			files = (
 				4A06B5EA22B3E85500BDBA18 /* CarthageInput.xcfilelist in Resources */,
 				4A06B5EB22B3E85500BDBA18 /* CarthageOutput.xcfilelist in Resources */,
+				4A06B62722B47D3300BDBA18 /* ClockViewController.xib in Resources */,
 				4A06B60222B3EA6B00BDBA18 /* LoginViewController.xib in Resources */,
 				4A06B5DA22B3E44500BDBA18 /* LaunchScreen.storyboard in Resources */,
 				4A06B61E22B471DD00BDBA18 /* IndicatorViewController.xib in Resources */,
@@ -398,6 +421,7 @@
 				4A06B60122B3EA6B00BDBA18 /* LoginViewController.swift in Sources */,
 				4A06B61622B401FB00BDBA18 /* MockAccountRepositoryImpl.swift in Sources */,
 				4A06B60622B3F6FA00BDBA18 /* Logger.swift in Sources */,
+				4A06B62622B47D3300BDBA18 /* ClockViewController.swift in Sources */,
 				4A06B61322B4018300BDBA18 /* AccountRepository.swift in Sources */,
 				4A06B61D22B471DD00BDBA18 /* IndicatorViewController.swift in Sources */,
 				4A06B62122B47AAA00BDBA18 /* UIAlertController+Extension.swift in Sources */,

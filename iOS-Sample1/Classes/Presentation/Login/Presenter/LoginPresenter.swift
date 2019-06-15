@@ -3,7 +3,8 @@ import Foundation
 protocol LoginView: AnyObject {
   func showFullScreenLoading()
   func hideFullScreenLoading()
-  func showAlert(title: String, handler: (() -> Void)?)
+  func showErrorAlert(title: String)
+  func showSucceededAuthenticateAlert(title: String)
 }
 
 final class LoginPresenter {
@@ -17,11 +18,9 @@ final class LoginPresenter {
       self?.view?.hideFullScreenLoading()
       switch result {
       case .success:
-        self?.view?.showAlert(title: "Succeeded to authenticate.") {
-          log.d("tap alert!")
-        }
+        self?.view?.showSucceededAuthenticateAlert(title: "Succeeded to authenticate.")
       case .failure:
-        self?.view?.showAlert(title: "Failed to authenticate.", handler: nil)
+        self?.view?.showErrorAlert(title: "Failed to authenticate.")
       }
     }
   }
