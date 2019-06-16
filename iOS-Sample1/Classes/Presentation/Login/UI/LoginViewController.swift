@@ -102,8 +102,10 @@ extension LoginViewController: LoginView {
     present(indicatorVC, animated: false)
   }
 
-  func hideFullScreenLoading() {
-    indicatorVC.dismiss(animated: false)
+  func hideFullScreenLoading(completion: @escaping () -> Void) {
+    indicatorVC.dismiss(animated: false) {
+      completion()
+    }
   }
 
   func showErrorAlert(title: String) {
